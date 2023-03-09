@@ -11,36 +11,16 @@ function setMonths(pixel: HTMLTableCellElement) {
     const tableHead = document.getElementById("tableHead")
     const column = pixel.dataset.col
     const date = pixel.dataset.date    
-    
-    // if (date?.includes('01-01') && column !== undefined ) {
-    //     const jan = document.createElement("td")
-    //     jan.innerHTML = "Jan"
-    //     jan.setAttribute("style", `left:${parseInt(column) * 16}px`)
-    //     tableHead?.appendChild(jan)
-    // }
-    // if (date?.includes('02-01') && column !== undefined ) {
-    //     const feb = document.createElement("td")
-    //     feb.innerHTML = "Feb"
-    //     feb.setAttribute("style", `left:${parseInt(column) * 16}px`)
-    //     tableHead?.appendChild(feb)
-    // }
-    // if (date?.includes('01-01') && column !== undefined ) {
-    //     console.log(pixel.dataset.col)
-    //     const jan = document.createElement("td")
-    //     jan.innerHTML = "Jan"
-    //     jan.setAttribute("style", `left:${parseInt(column) * 16}px`)
-    //     tableHead?.appendChild(jan)
-    // }
 
     for (let i = 0;i < months.length; i++) {
         const month = months[i]
         if (date?.includes(`${("0" + (i+1)).slice(-2)}-01`) && column !== undefined) {
             console.log(column)
-            console.log(`${("0" + (i+1)).slice(-2)}-01`)
-            const monthTd = document.createElement("td")
+            // console.log(`${("0" + (i+1)).slice(-2)}-01`)
+            const monthTd = document.createElement("div")
             monthTd.innerHTML = month
-            // monthTd.setAttribute("style", `left:${parseInt(column) * 16}px`);
-            monthTd.setAttribute("colspan", 4);
+            monthTd.setAttribute("style", `left:${parseInt(column) * 16}px; height: 0px`);
+            // monthTd.setAttribute("colspan", "4");
             tableHead?.appendChild(monthTd);
         }
     }
@@ -50,18 +30,18 @@ function setMonths(pixel: HTMLTableCellElement) {
 
 
 function setGraph() {
-const graph = document.getElementById("graph")
-let date = new Date()
-let dayOfWeek = date.getDay()
+    const graph = document.getElementById("graph")
+    let date = new Date()
+    let dayOfWeek = date.getDay()
 
-let startDate = new Date()
-startDate.setDate(startDate.getDate() - ( 365 + dayOfWeek) -1)
-console.log("startDate is " + startDate)
+    let startDate = new Date()
+    startDate.setDate(startDate.getDate() - ( 365 + dayOfWeek) + 1)
+    console.log("startDate is " + startDate)
     for (let i = 0; i < 7; i++) {
         let row = document.createElement("tr")
         row.className = "row"
-        for (let  j = 0; j < 52; j++) {
-            if ( i > dayOfWeek && j == 51) break;
+        for (let  j = 0; j < 53; j++) {
+            if ( i > dayOfWeek && j == 52) break;
             
             let pixel = document.createElement("td")
             let commitDate = new Date(startDate)

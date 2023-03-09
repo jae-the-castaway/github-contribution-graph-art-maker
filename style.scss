@@ -17,14 +17,34 @@ body {
 .flex {
   display: flex;
   justify-content: space-between;
+  i {
+    top: 10px;
+  }
+
+  p,
+  div {
+    font-size: 12px;
+  }
 }
 
-// h2 {
+.bottom {
+  margin-left: 50px;
+  margin-right: 40px;
+}
 
-// }
+h2 {
+  font-size: 16px;
+  font-weight: 400;
+}
 
-// h3 {
-// }
+.settings {
+  display: flex;
+}
+h3 {
+  font-size: 12px;
+  font-weight: 400;
+  align-self: flex-end;
+}
 
 .border {
   border: 1px solid rgb(68, 76, 86);
@@ -69,9 +89,13 @@ body {
 .overflow {
   overflow-x: auto;
   max-width: 100%;
+  padding-top: 25px;
+  margin-bottom: -30px;
 }
 
 .table {
+  margin-left: 50px;
+  margin-right: 50px;
   border-spacing: 4px;
   overflow-x: hidden;
   table-layout: fixed;
@@ -79,17 +103,17 @@ body {
 }
 
 #graph {
-  // display: table;
   margin-bottom: 10px;
-  // overflow-x: auto;
 }
 
-.row {
-  // display: table-row;
+#week {
+  top: 100px;
+  width: 0px;
+  height: 10px;
+  translate: 10px -120px;
 }
 
 .pixel {
-  // display: table-cell;
   width: 11px;
   height: 11px;
   background-color: $color-0;
@@ -118,8 +142,8 @@ body {
 }
 
 #tableHead {
-  td {
+  div {
     position: relative;
-    // top: -100px;
+    top: -20px;
   }
 }
