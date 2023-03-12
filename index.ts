@@ -1,10 +1,5 @@
-// interface Pixel {
-//     [x: string]: any
-//     dataset: {
-//         date : string
-//         col : string
-//     }   
-// }
+
+
 
 function setMonths(pixel: HTMLTableCellElement) {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -19,7 +14,7 @@ function setMonths(pixel: HTMLTableCellElement) {
             // console.log(`${("0" + (i+1)).slice(-2)}-01`)
             const monthTd = document.createElement("div")
             monthTd.innerHTML = month
-            monthTd.setAttribute("style", `left:${parseInt(column) * 16}px; height: 0px`);
+            monthTd.setAttribute("style", `left:${parseInt(column) * 16}px`);
             // monthTd.setAttribute("colspan", "4");
             tableHead?.appendChild(monthTd);
         }
@@ -61,17 +56,69 @@ function setGraph() {
         graph?.appendChild(row)
     }
 }
+// { dataset: { color: string; }; }
+function setColor(element:any  | HTMLTextAreaElement) {
+    penColor = element.dataset.color;
 
-
-function setUp() {
-    setGraph()
-    
+  }
+  
+  function draw(element: { style: { backgroundColor: string; }; }) {
+    element.style.backgroundColor = penColor;
+  }
+  
+  function setPenColorOnHover(target: any) {
+    document.querySelectorAll('.pen').forEach(function(item: any){
+      
+      item.setAttribute("style", "border: none")
+      target.setAttribute("style", "border: 2px solid white")
+    })
 }
 
 
 
 
-const dafaltColor = "#ebedf0"
+
+
+function setUp() {
+    setGraph()
+
+    // set pen color on hover
+
+    
+    document.addEventListener('mouseover', function(event) {
+        const target = event.target as HTMLTextAreaElement;
+      if(target.classList.contains('pixel')) {
+        if(isDrawing) { draw(target); }
+      }
+    });
+    
+    document.addEventListener('mouseup', function(event) {
+      isDrawing = false;
+    });
+    
+    document.getElementById("graph")?.addEventListener('mousedown', function(event) {
+      isDrawing = true;                          
+    });
+    
+    document.addEventListener('click', function (event) {
+        const target = event.target as HTMLTextAreaElement;
+      if(target.classList.contains('pen')) {
+          setPenColorOnHover(target)
+          setColor(target)
+      }
+      
+      if(target.classList.contains('pixel')) {
+        draw(target);
+      }
+    }, false);
+
+
+}
+
+
+
+
+const dafaultColor = "#ebedf0"
 let penColor = "#196127"
 let isDrawing = false;
 setUp()

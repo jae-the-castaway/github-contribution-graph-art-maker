@@ -1,11 +1,4 @@
 "use strict";
-// interface Pixel {
-//     [x: string]: any
-//     dataset: {
-//         date : string
-//         col : string
-//     }   
-// }
 function setMonths(pixel) {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const tableHead = document.getElementById("tableHead");
@@ -18,7 +11,7 @@ function setMonths(pixel) {
             // console.log(`${("0" + (i+1)).slice(-2)}-01`)
             const monthTd = document.createElement("div");
             monthTd.innerHTML = month;
-            monthTd.setAttribute("style", `left:${parseInt(column) * 16}px; height: 0px`);
+            monthTd.setAttribute("style", `left:${parseInt(column) * 16}px`);
             // monthTd.setAttribute("colspan", "4");
             tableHead === null || tableHead === void 0 ? void 0 : tableHead.appendChild(monthTd);
         }
@@ -53,10 +46,49 @@ function setGraph() {
         graph === null || graph === void 0 ? void 0 : graph.appendChild(row);
     }
 }
-function setUp() {
-    setGraph();
+// { dataset: { color: string; }; }
+function setColor(element) {
+    penColor = element.dataset.color;
 }
-const dafaltColor = "#ebedf0";
+function draw(element) {
+    element.style.backgroundColor = penColor;
+}
+function setPenColorOnHover(target) {
+    document.querySelectorAll('.pen').forEach(function (item) {
+        item.setAttribute("style", "border: none");
+        target.setAttribute("style", "border: 2px solid white");
+    });
+}
+function setUp() {
+    var _a;
+    setGraph();
+    // set pen color on hover
+    document.addEventListener('mouseover', function (event) {
+        const target = event.target;
+        if (target.classList.contains('pixel')) {
+            if (isDrawing) {
+                draw(target);
+            }
+        }
+    });
+    document.addEventListener('mouseup', function (event) {
+        isDrawing = false;
+    });
+    (_a = document.getElementById("graph")) === null || _a === void 0 ? void 0 : _a.addEventListener('mousedown', function (event) {
+        isDrawing = true;
+    });
+    document.addEventListener('click', function (event) {
+        const target = event.target;
+        if (target.classList.contains('pen')) {
+            setPenColorOnHover(target);
+            setColor(target);
+        }
+        if (target.classList.contains('pixel')) {
+            draw(target);
+        }
+    }, false);
+}
+const dafaultColor = "#ebedf0";
 let penColor = "#196127";
 let isDrawing = false;
 setUp();

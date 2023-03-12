@@ -1,3 +1,11 @@
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: rgb(173, 186, 199);
+}
+
 body {
   text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
@@ -19,8 +27,12 @@ body {
 }
 
 .bottom {
-  margin-left: 50px;
-  margin-right: 40px;
+  padding: 0 50px 10px 50px;
+  display: relative;
+}
+.bottom p:hover {
+  color: #539bf5;
+  cursor: pointer;
 }
 
 h2 {
@@ -36,6 +48,10 @@ h3 {
   font-size: 12px;
   font-weight: 400;
   align-self: flex-end;
+}
+h3:hover {
+  color: #539bf5;
+  cursor: pointer;
 }
 
 .border {
@@ -86,8 +102,6 @@ h3 {
 .overflow {
   overflow-x: auto;
   max-width: 100%;
-  padding-top: 25px;
-  margin-bottom: -30px;
 }
 
 .table {
@@ -97,10 +111,8 @@ h3 {
   overflow-x: hidden;
   table-layout: fixed;
   width: 832px;
-}
-
-#graph {
-  margin-bottom: 10px;
+  z-index: 0;
+  padding-top: 30px;
 }
 
 #week {
@@ -139,5 +151,49 @@ h3 {
 
 #tableHead div {
   position: relative;
+  height: 0;
   top: -20px;
+}
+
+footer {
+  margin-top: 300px;
+  color: rgb(173, 186, 199);
+  display: flex;
+  justify-content: center;
+}
+footer .profile,
+footer .profile:visited {
+  display: flex;
+  align-items: center;
+}
+footer .profile img,
+footer .profile:visited img {
+  height: 40px;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+footer .profile .profile-text h6,
+footer .profile:visited .profile-text h6 {
+  font-size: 12px;
+}
+footer .profile .profile-text p,
+footer .profile:visited .profile-text p {
+  font-size: 10px;
+  font-weight: 400;
+  position: relative;
+  top: -20px;
+}
+footer .socials {
+  display: flex;
+  align-items: center;
+}
+footer .socials a {
+  background-color: rgba(208, 211, 215, 0.075);
+  width: 32px;
+  height: 32px;
+  border-radius: 100px;
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=style.css.map */
