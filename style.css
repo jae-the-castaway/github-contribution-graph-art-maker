@@ -85,19 +85,19 @@ h3:hover {
 }
 
 .color-0 {
-  background-color: #2d333b;
+  background-color: #2d333b !important;
 }
 
 .color-1 {
-  background-color: #c6e48b;
+  background-color: #c6e48b !important;
 }
 
 .color-2 {
-  background-color: #7bc96f;
+  background-color: #7bc96f !important;
 }
 
 .color-3 {
-  background-color: #239a3b;
+  background-color: #239a3b !important;
 }
 
 .color-4 {
@@ -138,8 +138,24 @@ h3:hover {
   display: flex;
   align-items: baseline;
 }
-.samples div {
+.samples .sample {
   margin: 2px;
+  width: 11px;
+  height: 11px;
+  background-color: #2d333b;
+  border-radius: 2px;
+}
+.samples .sample[data-level="1"] {
+  background-color: #c6e48b;
+}
+.samples .sample[data-level="2"] {
+  background-color: #7bc96f;
+}
+.samples .sample[data-level="3"] {
+  background-color: #239a3b;
+}
+.samples .sample[data-level="4"] {
+  background-color: #196127;
 }
 
 #tableHead div {

@@ -90,16 +90,16 @@ h3 {
   margin: 0 auto;
 }
 .color-0 {
-  background-color: $color-0;
+  background-color: $color-0 !important;
 }
 .color-1 {
-  background-color: $color-1;
+  background-color: $color-1 !important;
 }
 .color-2 {
-  background-color: $color-2;
+  background-color: $color-2 !important;
 }
 .color-3 {
-  background-color: $color-3;
+  background-color: $color-3 !important;
 }
 .color-4 {
   background-color: $color-4;
@@ -138,8 +138,25 @@ h3 {
 .samples {
   display: flex;
   align-items: baseline;
-  div {
+
+  .sample {
     margin: 2px;
+    width: 11px;
+    height: 11px;
+    background-color: $color-0;
+    border-radius: 2px;
+    &[data-level="1"] {
+      background-color: $color-1;
+    }
+    &[data-level="2"] {
+      background-color: $color-2;
+    }
+    &[data-level="3"] {
+      background-color: $color-3;
+    }
+    &[data-level="4"] {
+      background-color: $color-4;
+    }
   }
 }
 

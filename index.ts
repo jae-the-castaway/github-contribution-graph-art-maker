@@ -13,15 +13,13 @@ function setMonths(pixel: HTMLTableCellElement) {
     for (let i = 0;i < months.length; i++) {
         const month = months[i]
         if (date?.includes(`${("0" + (i+1)).slice(-2)}-01`) && column !== undefined) {
-            const monthTd = document.createElement("div")
-            monthTd.innerHTML = month
+            const monthTd = document.createElement("div");
+            monthTd.innerHTML = month;
             monthTd.setAttribute("style", `left:${parseInt(column) * 16}px`);
-            // monthTd.setAttribute("colspan", "4");
             tableHead?.appendChild(monthTd);
         }
     }
 }
-
 
 function setGraph() {
     const graph = document.getElementById("graph")
@@ -50,7 +48,7 @@ function setGraph() {
         graph?.appendChild(row)
     }
 }
-// { dataset: { color: string; }; }
+
 function setColor(element:any  | HTMLTextAreaElement) {
     penColor = element.dataset.color;
   }
@@ -72,41 +70,17 @@ function setContributionCounter() {
   const color2: HTMLDivElement[]= Array.from(document.querySelectorAll<HTMLDivElement>('td[style="background-color: rgb(123, 201, 111);"]'))
   const color3: HTMLDivElement[]= Array.from(document.querySelectorAll<HTMLDivElement>('td[style="background-color: rgb(35, 154, 59);"]'))
   const color4: HTMLDivElement[]= Array.from(document.querySelectorAll<HTMLDivElement>('td[style="background-color: rgb(25, 97, 39);"]'))
-
   const contributionTitle: any = document.getElementById("contribution-title")
   let year = new Date()
   const currentYear = year.getFullYear()
   const counter = (color1.length * 1)+(color2.length * 2)+(color3.length * 4)+(color4.length * 7)
 
-  // const color2: NodeListOf<HTMLElement> = document.querySelectorAll("td[style="background-color: rgb(198, 228, 139);"]");
-
- 
-  console.log(color1)
-  // if (color === "background-color: rgb(198, 228, 139);") {
-  //   Counter = Counter + 1
-  //   counter.innerText = `${Counter} contributions in ${currentYear}`
-  // }
-  // if (color === "background-color: rgb(123, 201, 111);") {
-  //   Counter = Counter + 3
-  //   counter.innerText = `${Counter} contributions in ${currentYear}`
-  // }
-  
-  // if (color === "background-color: rgb(35, 154, 59);") {
-  //   Counter = Counter + 5
-  //   counter.innerText = `${Counter} contributions in ${currentYear}`
-  // }
-
-  // if (color === "background-color: rgb(25, 97, 39);") {
-  //   Counter = Counter + 8
   contributionTitle.innerText = `${counter} contributions in ${currentYear}`
-  // }
 }
 
 function setUp() {
     setGraph()
     setContributionCounter()
-    // set pen color on hover
-
     
     document.addEventListener('mouseover', function(event) {
         const target = event.target as HTMLTextAreaElement;
@@ -131,14 +105,11 @@ function setUp() {
           setColor(target)
       }
       
-      if(target.classList.contains('pixel')) {
+      if(target.classList.contains('pixel')&& !(target.classList.contains('sample'))) {
+        console.log(target.dataset.level)
         draw(target);
       }
     }, false);
-
-
 }
-
-
 
 setUp()
