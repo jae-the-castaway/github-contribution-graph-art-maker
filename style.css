@@ -35,6 +35,10 @@ body {
   cursor: pointer;
 }
 
+h1 {
+  padding: 20px 0;
+}
+
 h2 {
   font-size: 16px;
   font-weight: 400;
@@ -63,6 +67,7 @@ h3:hover {
   justify-content: center;
   display: flex;
   gap: 20px;
+  padding: 30px 0;
 }
 .color-palette div {
   color: blue;
@@ -127,18 +132,6 @@ h3:hover {
   height: 11px;
   background-color: #2d333b;
   border-radius: 2px;
-}
-.pixel[data-level="1"] {
-  background-color: #c6e48b;
-}
-.pixel[data-level="2"] {
-  background-color: #7bc96f;
-}
-.pixel[data-level="3"] {
-  background-color: #239a3b;
-}
-.pixel[data-level="4"] {
-  background-color: #196127;
 }
 
 .samples {
